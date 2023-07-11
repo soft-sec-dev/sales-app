@@ -1,3 +1,21 @@
+version: '1'
 services:
   angular-sales:
-    
+    image: angular-sales
+    build: 
+      context: ./sales
+      dockerfile: Dockerfile
+    container_name: angular-sales
+    ports:
+      - 4200:4200
+    environment:
+      - PORT=4200
+  sales-api:
+    image: sales-api
+    build: 
+      context: ./sales-api
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      - PORT=4000
